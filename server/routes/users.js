@@ -4,7 +4,7 @@ const { checkJwt, updateUser, getUser } = require('../auth0')
 const router = express.Router()
 
 router.get('/', checkJwt, (req, res) => {
-  const auth0_id = req.user?.sub
+  const auth0_id = req.auth?.sub
 
   if (!auth0_id) {
     res.send(null)

@@ -7,7 +7,7 @@ const dotenv = require('dotenv')
 dotenv.config()
 
 // TODO: set the domain and audience (API Identifier)
-const domain = 'https://horoeka-22-rebecca.au.auth0.com'
+const domain = 'https://horoeka-2022-alizaa.au.auth0.com'
 const audience = 'https://happydoggy/api'
 const checkJwt = jwt({
   secret: jwks.expressJwtSecret({
@@ -22,18 +22,13 @@ const checkJwt = jwt({
 })
 
 // https://auth0.github.io/node-auth0/ManagementClient.html
-const managementDomain = 'horoeka-22-rebecca.au.auth0.com'
-const managementAudience = 'https://horoeka-22-rebecca.au.auth0.com/api/v2/'
-const clientId = '3A2A9WUjCtFd6LjaWoyeDqXqKZ61pTjs'
-const clientSecret = process.env.AUTH0_API_SECRET || 'empty-secret'
-const scope = 'read:users'
-
 const management = new ManagementClient({
-  domain: managementDomain,
-  audience: managementAudience,
-  clientId,
-  clientSecret,
-  scope,
+  domain: 'horoeka-2022-alizaa.au.auth0.com',
+  clientId: 'LGmfIxYTUdSl5Eu5ptxYxiX1KIOsJ3WB',
+  clientSecret:
+    'cLrYWzcJUiBzbFfyLN2SWgdmDEMZqq_pH9Qp_VX2XK8YcBX5AQu01rq1aQnmSNzz',
+  scope: 'read:users',
+  audience: 'https://horoeka-2022-alizaa.au.auth0.com/api/v2/',
   tokenProvider: {
     enableCache: true,
     cacheTTLInSeconds: 10,
@@ -42,7 +37,8 @@ const management = new ManagementClient({
 
 async function getUser(id) {
   const user = await management.getUser({ id })
-  return { ...user.user_metadata.user_metadata, email: user.email }
+
+  return { ...user.user_metadata, email: user.email }
 }
 
 async function updateUser(id, userDetails) {
