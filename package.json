@@ -19,7 +19,6 @@
     "vite:preview": "vite preview",
     "vite:serve": "run-p server vite:preview",
     "tailwind": "npx tailwindcss -i ./server/public/input.css -o ./server/public/output.css --watch",
-    "postinstall": "run-s db:migrate db:seed",
     "test": "jest --verbose --watchAll",
     "lint": "eslint --ext .js,.jsx .",
     "build-react": "react-app-rewired build"
